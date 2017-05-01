@@ -12,6 +12,6 @@ Currently Supported Targets:
 Instructions: 
 -------------
 
-`docker build -t xcsoar-build - < xcsoarbuild/Dockerfile`
-`mkdir /opt/xcsoar/`
-`docker run -i -v /opt/xcsoar/:/opt/xcsoar/ -t xcsoar-build /bin/bash`
+* `docker build -t xcsoar-build - < xcsoarbuild/Dockerfile`
+* `mkdir /opt/xcsoar/`
+* `docker run -i -v /opt/xcsoar/:/opt/xcsoar/ -t xcsoar-build /bin/bash`
