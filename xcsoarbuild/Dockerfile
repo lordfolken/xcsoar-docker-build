@@ -21,6 +21,12 @@ RUN apt install -y make librsvg2-bin xsltproc imagemagick gettext zip
 # Linux build Dependencies
 RUN apt-get install make g++ zlib1g-dev libsdl1.2-dev libfreetype6-dev libpng-dev libjpeg-dev libcurl4-openssl-dev libxml-parser-perl librsvg2-bin xsltproc imagemagick gettext fonts-dejavu
 
+# Android target
+RUN apt-get install -y default-jdk-headless ant vorbis-tools
+RUN apt-get install -y google-android-platform-14-installer
+RUN apt-get install -y google-android-ndk-installer
+RUN apt-get install -y m4 automake
+
 # Pull source code into image
 
 # volume needs to be mounted later, as git clone will fail
@@ -30,5 +36,6 @@ WORKDIR /opt/xcsoar
 
 COPY ./bin/xcsoar-update /usr/local/bin
 COPY ./bin/xcsoar-compile-unix /usr/local/bin
+COPY ./bin/xcsoar-compile-android /usr/local/bin
 RUN chmod 755 /usr/local/bin/*
 #CMD cd /opt/xcsoar && git pull && rm -rf /opt/xcsoar/output/* && mkdir -p output/src && make TARGET=UNIX TARGET=WIN64 TARGET=PC DEBUG=n USE_CCACHE=y -j 5

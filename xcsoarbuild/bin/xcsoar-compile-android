@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xcsoar-update
+cd /opt/xcsoar
+make TARGET=ANDROID -j5 ANDROID_NDK=/usr/lib/android-ndk ANDROID_SDK=/usr/lib/android-sdk
