@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t xcsoar/latest xcsoarbuild
+docker build -t xcsoar xcsoarbuild
