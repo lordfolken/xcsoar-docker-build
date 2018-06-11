@@ -6,12 +6,20 @@ This Docker Image when built, will compile XCSoar for several targets in a clean
 Currently Supported Targets: 
 ----------------------------
 - UNIX (linux & co)
-- PC
-- KOBO (wip)
 
 Instructions: 
 -------------
 
-* `docker build -t xcsoar-build - < xcsoarbuild/Dockerfile`
-* `mkdir /opt/xcsoar/`
-* `docker run -i -v /opt/xcsoar/:/opt/xcsoar/ -t xcsoar-build /bin/bash`
+To build the container
+`./build.sh`
+
+To run the container and start compiling XCSoar:
+`mkdir /opt/xcsoar/`
+`./run.sh`
+
+For an interactive shell:
+`./shell.sh`
+
+Inside the docker container the following scripts are available:
+`xcsoar-compile-unix` (will compile xcsoar for UNIX target)
+`xcsoar-update` will pull latest git sources
