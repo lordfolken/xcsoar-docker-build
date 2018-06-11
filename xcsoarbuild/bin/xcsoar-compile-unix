@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xcsoar-update
+cd /opt/xcsoar
+make TARGET=UNIX -j5
