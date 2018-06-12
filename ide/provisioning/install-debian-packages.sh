@@ -61,5 +61,6 @@ echo Installing dependencies for the Android target, not including SDK / NDK...
 apt-get --assume-yes install default-jdk-headless vorbis-tools adb
 echo
 
-# Clean up downloaded resources in order to free space
-apt clean 
+echo Clean up downloaded resources in order to free space
+apt-get clean 
+echo 
