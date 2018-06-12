@@ -2,6 +2,9 @@
 
 set -e
 
+# To prevent apt from displaying dialogs
+DEBIAN_FRONTEND=noninteractive
+
 echo Installing base dependencies...
 apt-get --assume-yes install make \
   librsvg2-bin xsltproc \
@@ -57,3 +60,6 @@ echo
 echo Installing dependencies for the Android target, not including SDK / NDK...
 apt-get --assume-yes install default-jdk-headless vorbis-tools adb
 echo
+
+# Clean up downloaded resources in order to free space
+apt clean 
