@@ -15,17 +15,21 @@ RUN echo $BPO > /etc/apt/sources.list.d/debian-backports.list && echo $SID > /et
 RUN apt install --no-install-recommends -y $GIT && apt clean
 RUN apt install -y $BUILDDEP && apt clean 
 RUN apt install -y $BUILDDEPSID && apt clean
-RUN apt install -y xz-utils g++-arm-linux-gnueabihf gawk build-essential ttf-bitstream-vera g++-6-arm-linux-gnueabihf libc6-armhf-cross
+RUN apt install -y xz-utils g++-arm-linux-gnueabihf gawk build-essential ttf-bitstream-vera g++-6-arm-linux-gnueabihf libc6-armhf-cross && apt clean
 # Basic build Dependencies
-RUN apt install -y make librsvg2-bin xsltproc imagemagick gettext zip 
+RUN apt install -y make librsvg2-bin xsltproc imagemagick gettext zip && apt clean
 # Linux build Dependencies
-RUN apt-get install make g++ zlib1g-dev libsdl1.2-dev libfreetype6-dev libpng-dev libjpeg-dev libcurl4-openssl-dev libxml-parser-perl librsvg2-bin xsltproc imagemagick gettext fonts-dejavu
+RUN apt-get install make g++ zlib1g-dev libsdl1.2-dev libfreetype6-dev libpng-dev libjpeg-dev libcurl4-openssl-dev libxml-parser-perl librsvg2-bin xsltproc imagemagick gettext fonts-dejavu && apt clean
 
 # Android target
-RUN apt-get install -y default-jdk-headless ant vorbis-tools
-RUN apt-get install -y google-android-platform-14-installer
-RUN apt-get install -y google-android-ndk-installer
-RUN apt-get install -y m4 automake
+RUN apt-get install -y default-jdk-headless ant vorbis-tools && apt clean
+RUN apt-get install -y m4 automake wget && apt clean
+RUN mkdir /root/opt/ && cd /root/opt && wget https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip && unzip android-ndk-r15c-linux-x86_64.zip && rm android-ndk-r15c-linux-x86_64.zip
+RUN mkdir -p /root/opt/android-sdk-linux && cd /root/opt/android-sdk-linux && wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip && unzip sdk-tools-linux-4333796.zip && rm sdk-tools-linux-4333796.zip
+RUN cd /root/opt/android-sdk-linux/ && yes | ./tools/bin/sdkmanager --licenses
+RUN /root/opt/android-sdk-linux/tools/bin/sdkmanager "platforms;android-22"
+RUN /root/opt/android-sdk-linux/tools/bin/sdkmanager "platforms;android-26"
+RUN /root/opt/android-sdk-linux/tools/bin/sdkmanager "build-tools;26.0.0"
 
 # Pull source code into image
 
