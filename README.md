@@ -11,16 +11,23 @@ Currently Supported Targets:
 Instructions: 
 -------------
 
+The container itself is readonly. All output will be done to "/opt/xcsoar" on your host. 
+
 To build the container
 `./build.sh`
 
-For an interactive shell:
+To run the container interactivly:
+`mkdir /opt/xcsoar`
 `./shell.sh`
 
+To run everything: 
+`mkdir /opt/xcsoar`
+`./run.sh`
+
 Inside the docker container the following scripts are available:
-`xcsoar-update` will pull latest git sources
-`xcsoar-compile-unix` (will compile xcsoar for UNIX target)
-`xcsoar-compile-android` (will compile xcsoar for UNIX target)
+ * `xcsoar-update` will pull latest git sources
+ * `xcsoar-compile-unix` (will compile xcsoar for UNIX target)
+ * `xcsoar-compile-android` (will compile xcsoar for UNIX target)
 
 Wishlist:
 ---------
