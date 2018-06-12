@@ -1,4 +1,11 @@
 #!/bin/bash
 
 cd /opt/xcsoar
-git pull
+
+if [ -d /opt/xcsoar/.git ]; then
+  git pull
+else
+  git clone https://github.com/XCSoar/XCSoar.git /opt/xcsoar/
+  git submodule init
+  git submodule update
+fi  
