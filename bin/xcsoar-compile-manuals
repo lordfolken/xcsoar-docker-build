@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd /opt/xcsoar
+CPUS=$(lscpu -p | tail -n1 | cut -f1 -d,)
+let CPUS++
+make manual -j$CPUS USE_CCACHE=y
