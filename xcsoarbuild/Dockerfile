@@ -24,4 +24,5 @@ WORKDIR /opt/xcsoar
 COPY ./bin/xcsoar-update /usr/local/bin
 COPY ./bin/xcsoar-compile-unix /usr/local/bin
 COPY ./bin/xcsoar-compile-android /usr/local/bin
+COPY ./bin/xcsoar-compile-pi /usr/local/bin
 RUN chmod 755 /usr/local/bin/*
