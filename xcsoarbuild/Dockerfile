@@ -10,10 +10,11 @@ RUN echo $BPO > /etc/apt/sources.list.d/debian-backports.list && echo $SID > /et
 COPY ./ide/provisioning/install-debian-packages.sh /root/install-debian-packages.sh
 COPY ./ide/provisioning/install-android-tools.sh /root/install-android-tools.sh
 RUN chmod 755 /root/*.sh
-RUN /root/install-debian-packages.sh 
+RUN /root/install-debian-packages.sh && apt-get clean
 RUN /root/install-android-tools.sh
-RUN apt-get -y install python-minimal 
-RUN apt-get -y install python3
+RUN apt-get -y install python-minimal && apt-get clean
+RUN apt-get -y install python3 && apt-get clean
+RUN apt-get -y install vim && apt-get clean
 
 # volume needs to be mounted later, as git clone will fail
 VOLUME ["/opt/xcsoar/"]
