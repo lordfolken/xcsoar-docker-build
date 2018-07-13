@@ -2,4 +2,6 @@
 
 xcsoar-update
 cd /opt/xcsoar
-make TARGET=UNIX -j5
+CPUS=$(lscpu -p | tail -n1 | cut -f1 -d,)
+let CPUS++
+make TARGET=UNIX -j$CPUS
