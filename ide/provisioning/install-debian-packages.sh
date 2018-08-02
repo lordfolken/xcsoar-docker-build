@@ -6,6 +6,9 @@ set -e
 DEBIAN_FRONTEND=noninteractive
 APTOPTS="--no-install-recommends --assume-yes"
 
+echo Updating Repositories
+apt-get update
+
 echo Installing base dependencies...
 apt-get install $APTOPTS make \
   librsvg2-bin xsltproc \
