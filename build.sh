@@ -2,4 +2,4 @@
 
 source ./VERSION.txt
 
-docker build -t xcsoar-build:$VERSION xcsoarbuild
+docker build -t xcsoar-build:$VERSION ./
