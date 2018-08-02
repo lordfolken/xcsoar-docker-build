@@ -1,5 +1,6 @@
 #!/bin/bash
 
 source ./VERSION.txt
+source ./VOLUMES.txt
 
-docker run -it -v /opt/xcsoar:/opt/xcsoar xcsoar-build:$VERSION /bin/bash
+docker run -it $VOLUMES xcsoar-build:$VERSION /bin/bash
