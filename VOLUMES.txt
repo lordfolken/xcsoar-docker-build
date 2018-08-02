@@ -1,1 +1,1 @@
-VOLUMES=" -v /opt/xcsoar:/opt/xcsoar -v /var/cache/ccache:/root/.ccache"
+VOLUMES=" -v /opt/xcsoar:/opt/xcsoar -v /opt/xcsoar-ccache:/root/.ccache"
