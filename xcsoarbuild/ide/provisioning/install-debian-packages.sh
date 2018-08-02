@@ -5,6 +5,9 @@ set -e
 # To prevent apt from displaying dialogs
 DEBIAN_FRONTEND=noninteractive
 
+echo Updating Repositories
+apt-get update
+
 echo Installing base dependencies...
 apt-get --assume-yes install make \
   librsvg2-bin xsltproc \
