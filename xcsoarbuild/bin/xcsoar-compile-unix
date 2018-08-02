@@ -4,4 +4,4 @@ xcsoar-update
 cd /opt/xcsoar
 CPUS=$(lscpu -p | tail -n1 | cut -f1 -d,)
 let CPUS++
-make TARGET=UNIX -j$CPUS
+make TARGET=UNIX -j$CPUS USE_CCACHE=y
