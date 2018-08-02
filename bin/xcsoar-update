@@ -1,0 +1,29 @@
+#!/bin/bash
+
+source /root/VERSION.txt
+cd /opt/xcsoar
+
+case $VERSION in
+  v6.8.x)
+    BRANCH=v6.8.x
+    ;;
+  latest)
+    BRANCH=master
+    ;;
+  *)
+    BRANCH=master
+    ;;
+esac
+
+
+if [ -d /opt/xcsoar/.git ]; then
+  git pull
+else
+  git clone https://github.com/XCSoar/XCSoar.git /opt/xcsoar/
+fi  
+
+git checkout $BRANCH
+git submodule init
+git submodule update -f
+cd /opt/xcsoar
+make clean

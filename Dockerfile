@@ -24,3 +24,5 @@ RUN cd /usr/local/bin && chmod 755 xcsoar-update xcsoar-compile-android xcsoar-c
 
 # CCcache volume for performance gain on subsequent runs
 VOLUME ["/root/.ccache" ]
+
+COPY VERSION.txt /root/
