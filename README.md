@@ -17,11 +17,11 @@ To build the container
 `./build.sh`
 
 To run the container interactivly:
-`mkdir /opt/xcsoar`
+`mkdir /opt/xcsoar /opt/xcsoar-ccache`
 `./shell.sh`
 
 To run everything: 
-`mkdir /opt/xcsoar`
+`mkdir /opt/xcsoar /opt/xcsoar-ccache`
 `./run.sh`
 
 Inside the docker container the following scripts are available:

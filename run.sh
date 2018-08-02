@@ -1,7 +1,10 @@
 #!/bin/bash
 
 source ./VERSION.txt
+source ./VOLUMES.txt
 
-docker run -it -v /opt/xcsoar:/opt/xcsoar xcsoar-build:$VERSION xcsoar-update
-docker run -it -v /opt/xcsoar:/opt/xcsoar xcsoar-build:$VERSION xcsoar-compile-unix
-docker run -it -v /opt/xcsoar:/opt/xcsoar xcsoar-build:$VERSION xcsoar-compile-android
+mkdir /opt/xcsoar 2> /dev/null
+
+docker run -it $VOLUMES xcsoar-build:$VERSION xcsoar-update
+docker run -it $VOLUMES xcsoar-build:$VERSION xcsoar-compile-unix
+docker run -it $VOLUMES xcsoar-build:$VERSION xcsoar-compile-android

@@ -4,4 +4,4 @@ xcsoar-update
 CPUS=$(lscpu -p | tail -n1 | cut -f1 -d,)
 let CPUS++
 cd /opt/xcsoar
-make TARGET=ANDROID -j$CPUS 
+make TARGET=ANDROID -j$CPUS USE_CCACHE=y
