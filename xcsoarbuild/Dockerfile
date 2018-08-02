@@ -1,17 +1,17 @@
 # Builds XCSoar UNIX Target in a docker image
 
-FROM debian:latest
+FROM debian:stretch
 ENV DEBIAN_FRONTEND=noninteractive
-ENV BPO="deb http://httpredir.debian.org/debian stable-backports main non-free contrib"
-ENV SID="deb http://httpredir.debian.org/debian stable main non-free contrib" 
+ENV BPO="deb http://httpredir.debian.org/debian stretch-backports main non-free contrib"
+ENV SID="deb http://httpredir.debian.org/debian stretch main non-free contrib" 
 
 # Install build dependencies 
-RUN echo $BPO > /etc/apt/sources.list.d/debian-backports.list && echo $SID > /etc/apt/sources.list.d/stable.list && apt update 
+RUN echo $BPO > /etc/apt/sources.list.d/debian-backports.list && echo $SID > /etc/apt/sources.list.d/stretch.list && apt update 
 COPY ./ide/provisioning/install-debian-packages.sh /root/install-debian-packages.sh
 COPY ./ide/provisioning/install-android-tools.sh /root/install-android-tools.sh
-RUN chmod 755 /root/*.sh
+RUN chmod 755 /root/install-android-tools.sh /root/install-debian-packages.sh
 RUN /root/install-debian-packages.sh && apt-get clean
-RUN /root/install-android-tools.sh
+RUN /root/install-android-tools.sh && apt-get clean
 RUN apt-get -y install python-minimal python3 vim ccache && apt-get clean
 
 # volume needs to be mounted later, as git clone will fail
