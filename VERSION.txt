@@ -1,1 +1,1 @@
-VERSION=v6.8.x
+VERSION=latest
