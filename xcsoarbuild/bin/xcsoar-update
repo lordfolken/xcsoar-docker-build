@@ -4,8 +4,10 @@ cd /opt/xcsoar
 
 if [ -d /opt/xcsoar/.git ]; then
   git pull
+  git submodule init
+  git submodule update -f
 else
   git clone https://github.com/XCSoar/XCSoar.git /opt/xcsoar/
   git submodule init
-  git submodule update
+  git submodule update -f
 fi  
