@@ -1,5 +1,7 @@
 #!/bin/bash
 
-docker run -it -v /opt/xcsoar:/opt/xcsoar xcsoar-build:latest xcsoar-update
-docker run -it -v /opt/xcsoar:/opt/xcsoar xcsoar-build:latest xcsoar-compile-unix
-docker run -it -v /opt/xcsoar:/opt/xcsoar xcsoar-build:latest xcsoar-compile-android
+source ./VERSION.txt
+
+docker run -it -v /opt/xcsoar:/opt/xcsoar xcsoar-build:$VERSION xcsoar-update
+docker run -it -v /opt/xcsoar:/opt/xcsoar xcsoar-build:$VERSION xcsoar-compile-unix
+docker run -it -v /opt/xcsoar:/opt/xcsoar xcsoar-build:$VERSION xcsoar-compile-android

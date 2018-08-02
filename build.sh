@@ -1,3 +1,5 @@
 #!/bin/bash
 
-docker build -t xcsoar-build xcsoarbuild
+source ./VERSION.txt
+
+docker build -t xcsoar-build:$VERSION xcsoarbuild
