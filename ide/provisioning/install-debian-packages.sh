@@ -65,6 +65,11 @@ echo Installing dependencies for the Android target, not including SDK / NDK...
 apt-get install $APTOPTS default-jdk-headless vorbis-tools adb libtool
 echo
 
+echo Installing dependencies for KOBO
+apt-get --assume-yes install libav-tools
+apt-get --assume-yes install ccache
+echo
+
 echo Clean up downloaded resources in order to free space
 apt-get clean 
 echo 

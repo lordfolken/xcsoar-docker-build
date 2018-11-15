@@ -1,0 +1,8 @@
+#!/bin/bash
+
+xcsoar-update
+cd /opt/xcsoar
+make TARGET=KOBO libs -j5
+make TARGET=KOBO -j5
+make TARGET=KOBO output/KOBO/KoboRoot.tgz -j5 
+
