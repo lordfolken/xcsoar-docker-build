@@ -19,8 +19,8 @@ VOLUME ["/opt/xcsoar/"]
 
 WORKDIR /opt/xcsoar
 
-COPY ./bin/xcsoar-update ./bin/xcsoar-compile-unix /./bin/xcsoar-compile-android ./bin/xcsoar-compile-pi ./bin/xcsoar-compile-pc /usr/local/bin/
-RUN cd /usr/local/bin && chmod 755 xcsoar-update xcsoar-compile-android xcsoar-compile-pi xcsoar-compile-pc xcsoar-compile-unix
+COPY ./bin/xcsoar-update ./bin/xcsoar-compile-unix ./bin/xcsoar-compile-android ./bin/xcsoar-compile-pi ./bin/xcsoar-compile-pc ./bin/xcsoar-compile-kobo /usr/local/bin/
+RUN cd /usr/local/bin && chmod 755 xcsoar-update xcsoar-compile-android xcsoar-compile-pi xcsoar-compile-pc xcsoar-compile-unix xcsoar-compile-kobo
 
 # CCcache volume for performance gain on subsequent runs
 VOLUME ["/root/.ccache" ]

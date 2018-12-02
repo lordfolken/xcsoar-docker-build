@@ -1,1 +1,5 @@
-VOLUMES=" -v /opt/xcsoar:/opt/xcsoar -v /opt/xcsoar-ccache:/root/.ccache"
+if [ "$(uname -s)" == "Darwin" ]; then
+	VOLUMES=" -v ${HOME}/xcsoar:/opt/xcsoar:delegated -v ${HOME}/xcsoar-ccache:/root/.ccache:delegated"
+else 
+	VOLUMES=" -v /opt/xcsoar:/opt/xcsoar -v /opt/xcsoar-ccache:/root/.ccache"
+fi
