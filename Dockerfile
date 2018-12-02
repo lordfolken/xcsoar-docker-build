@@ -6,7 +6,7 @@ ENV BPO="deb http://httpredir.debian.org/debian stretch-backports main non-free 
 ENV SID="deb http://httpredir.debian.org/debian stretch main non-free contrib" 
 
 # Install build dependencies 
-RUN echo $BPO > /etc/apt/sources.list.d/debian-backports.list && echo $SID > /etc/apt/sources.list.d/stretch.list && apt update 
+RUN rm -rf /var/lb/apt/lists/* && echo $BPO > /etc/apt/sources.list.d/debian-backports.list && echo $SID > /etc/apt/sources.list.d/stretch.list && apt update 
 COPY ./ide/provisioning/install-debian-packages.sh /root/install-debian-packages.sh
 COPY ./ide/provisioning/install-android-tools.sh /root/install-android-tools.sh
 RUN chmod 755 /root/install-android-tools.sh /root/install-debian-packages.sh
@@ -19,8 +19,8 @@ VOLUME ["/opt/xcsoar/"]
 
 WORKDIR /opt/xcsoar
 
-COPY ./bin/xcsoar-update ./bin/xcsoar-compile-unix /./bin/xcsoar-compile-android ./bin/xcsoar-compile-pi ./bin/xcsoar-compile-pc /usr/local/bin/
-RUN cd /usr/local/bin && chmod 755 xcsoar-update xcsoar-compile-android xcsoar-compile-pi xcsoar-compile-pc xcsoar-compile-unix
+COPY ./bin/xcsoar-update ./bin/xcsoar-compile-unix ./bin/xcsoar-compile-android ./bin/xcsoar-compile-pi ./bin/xcsoar-compile-pc ./bin/xcsoar-compile-kobo /usr/local/bin/
+RUN cd /usr/local/bin && chmod 755 xcsoar-update xcsoar-compile-android xcsoar-compile-pi xcsoar-compile-pc xcsoar-compile-unix xcsoar-compile-kobo
 
 # CCcache volume for performance gain on subsequent runs
 VOLUME ["/root/.ccache" ]

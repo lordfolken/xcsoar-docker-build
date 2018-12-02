@@ -1,6 +1,5 @@
 #!/bin/bash
 
-xcsoar-update
 CPUS=$(lscpu -p | tail -n1 | cut -f1 -d,)
 let CPUS++
 cd /opt/xcsoar

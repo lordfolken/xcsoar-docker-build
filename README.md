@@ -7,6 +7,7 @@ Currently Supported Targets:
 ----------------------------
 - UNIX (linux & co)
 - Android 
+- Kobo
 
 Instructions: 
 -------------
@@ -28,6 +29,8 @@ Inside the docker container the following scripts are available:
  * `xcsoar-update` will pull latest git sources
  * `xcsoar-compile-unix` (will compile xcsoar for UNIX target)
  * `xcsoar-compile-android` (will compile xcsoar for UNIX target)
+ * `xcsoar-compile-kobo` (will compile xcsoar for KOBO target)
+
 
 Wishlist:
 ---------
