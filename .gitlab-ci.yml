@@ -1,8 +1,12 @@
 image: docker:latest
 
 stages:
+ - prepare-image
  - prepare-tree
  - build
+
+variables:
+  CONTAINER_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH
 
 services:
   - docker:dind
@@ -10,11 +14,20 @@ before_script:
   - apk --update add make cmake py-pip git
   - pip install docker-compose
 
+nightly-prepare-image:
+  stage: prepare-image
+  script:
+   - docker login --username gitlab-ci-token --password $CI_JOB_TOKEN $CI_REGISTRY
+   - docker build --tag $CONTAINER_IMAGE:$CI_COMMIT_SHA .
+   - docker push $CONTAINER_IMAGE:$CI_COMMIT_SHA
+  except:
+   - tags
+
 nightly-prepare-tree:
   stage: prepare-tree
   script:
     - mkdir -p opt/xcsoar opt/xcsoar-ccache
-    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache folken/xcsoar-build:latest xcsoar-update
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-update
   except:
     - tags
   artifacts:
@@ -27,7 +40,7 @@ nightly-prepare-tree:
 nightly-unix:
   stage: build
   script:
-    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache folken/xcsoar-build:latest xcsoar-compile-unix
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile-unix
   except:
     - tags
   artifacts:
@@ -39,7 +52,7 @@ nightly-unix:
 nightly-android:
   stage: build
   script:
-    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache folken/xcsoar-build:latest xcsoar-compile-android
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile-android
   except:
     - tags
   artifacts:
@@ -51,7 +64,7 @@ nightly-android:
 nightly-pc:
   stage: build
   script:
-    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache folken/xcsoar-build:latest xcsoar-compile-pc
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile-pc
   except:
     - tags
   artifacts:
@@ -63,7 +76,7 @@ nightly-pc:
 nightly-kobo:
   stage: build
   script:
-    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache folken/xcsoar-build:latest xcsoar-compile-kobo
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile-kobo
   except:
     - tags
   artifacts:
@@ -75,7 +88,7 @@ nightly-kobo:
 nightly-docs:
   stage: build
   script:
-    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache folken/xcsoar-build:latest xcsoar-compile-manuals
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile-manuals
   except:
     - tags
   artifacts:
