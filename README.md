@@ -41,11 +41,8 @@ This is currently experimental. Here are some thoughts and things still needed:
  * use gnu parallel to automatically scale according to processors 
  * proper build instructions
  * add a xcsoar-compile-release 
- * add support for building documentation 
- * add support for building PC
- * add support for building WIN64, OpenVario, PI and Kobo
+ * add support for building WIN64, OpenVario, PI
  * add support for tests
- * add a volume for the ccache
  * proper namingscheme
  * checksumming external resources
  * add editors and other tools for editing code
