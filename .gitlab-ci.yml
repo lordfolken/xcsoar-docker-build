@@ -59,3 +59,15 @@ nightly-pc:
     when: always
     paths:
       - opt/xcsoar/output/PC
+
+nightly-kobo:
+  stage: build
+  script:
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache folken/xcsoar-build:latest xcsoar-compile-kobo
+  except:
+    - tags
+  artifacts:
+    expire_in: 4 weeks
+    when: always
+    paths:
+      - opt/xcsoar/output/KOBO
