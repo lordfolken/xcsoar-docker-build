@@ -18,8 +18,10 @@ nightly-prepare-image:
   stage: prepare-image
   script:
    - docker login --username gitlab-ci-token --password $CI_JOB_TOKEN $CI_REGISTRY
-   - docker build --tag $CONTAINER_IMAGE:$CI_COMMIT_SHA .
+   - docker pull $CONTAINTER_IMAGE:latest || true
+   - docker build --cache-from $CONTAINER_IMAGE:latest --tag $CONTAINER_IMAGE:$CI_COMMIT_SHA --tag $CONTAINER_IMAGE:latest .
    - docker push $CONTAINER_IMAGE:$CI_COMMIT_SHA
+   - docker push $CONTAINER_IMAGE:latest
   except:
    - tags
 
