@@ -42,7 +42,8 @@ nightly-prepare-tree:
 nightly-unix:
   stage: build
   script:
-    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile-unix
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile UNIX
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-test
   except:
     - tags
   artifacts:
@@ -54,7 +55,7 @@ nightly-unix:
 nightly-android:
   stage: build
   script:
-    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile-android
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile ANDROID
   except:
     - tags
   artifacts:
@@ -66,7 +67,7 @@ nightly-android:
 nightly-pc:
   stage: build
   script:
-    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile-pc
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile PC
   except:
     - tags
   artifacts:
@@ -78,7 +79,7 @@ nightly-pc:
 nightly-kobo:
   stage: build
   script:
-    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile-kobo
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile KOBO
   except:
     - tags
   artifacts:
@@ -90,7 +91,7 @@ nightly-kobo:
 nightly-docs:
   stage: build
   script:
-    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile-manuals
+    - docker run -v $(pwd)/opt/xcsoar:/opt/xcsoar -v $(pwd)/opt/xcsoar-ccache:/root/.ccache $CONTAINER_IMAGE:$CI_COMMIT_SHA xcsoar-compile DOCS
   except:
     - tags
   artifacts:

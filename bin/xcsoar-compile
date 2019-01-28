@@ -1,0 +1,21 @@
+#!/bin/bash
+
+CPUS=$(lscpu -p | tail -n1 | cut -f1 -d,)
+let CPUS++
+cd /opt/xcsoar
+
+if [ "$1" == "ANDROID" ]; then
+    make TARGET=$1 -j$CPUS USE_CCACHE=y
+elif [ "$1" == "DOCS" ]; then
+    make manual -j$CPUS USE_CCACHE=y
+elif [ "$1" == "KOBO" ]; then
+    make TARGET=$1 -j$CPUS libs
+    make TARGET=$1 -j$CPUS
+    make TARGET=$1 -j$CPUS output/KOBO/KoboRoot.tgz
+elif [[ "$1" == "PC" || "$1" == "UNIX" ]]; then
+    make TARGET=$1 -j$CPUS USE_CCACHE=y everything
+elif [ "$1" == "PI" ]; then
+    make TARGET=$1 -j$CPUS TC_SUFFIX=-6 USE_CCACHE=y
+else
+   echo "No target specified."
+fi
