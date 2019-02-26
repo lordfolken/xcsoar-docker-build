@@ -28,10 +28,10 @@ To run everything:
 
 Inside the docker container the following scripts are available:
  * `xcsoar-update` will pull latest git sources and clean the tree
- * `xcsoar-compile-unix` (will compile xcsoar for UNIX target)
- * `xcsoar-compile-android` (will compile xcsoar for UNIX target)
- * `xcsoar-compile-pc` (will compile xcsoar for PC target)
- * `xcsoar-compile-kobo` (will compile xcsoar for KOBO target)
+ * `xcsoar-compile UNIX` (will compile xcsoar for UNIX target)
+ * `xcsoar-compile ANDROID` (will compile xcsoar for UNIX target)
+ * `xcsoar-compile PC` (will compile xcsoar for PC target)
+ * `xcsoar-compile KOBO` (will compile xcsoar for KOBO target)
 
 
 Wishlist:
