@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source /root/VERSION.txt
-cd /opt/xcsoar
+cd /opt/xcsoar || exit 1
 
 case $VERSION in
   v6.8.x)
@@ -14,7 +14,6 @@ case $VERSION in
     BRANCH=master
     ;;
 esac
-
 
 if [ -d /opt/xcsoar/.git ]; then
   git pull
