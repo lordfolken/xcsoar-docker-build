@@ -1,4 +1,4 @@
-image: docker:latest
+image: docker:18.09
 
 stages:
  - prepare-image
@@ -12,7 +12,7 @@ services:
   - docker:dind
 before_script:
   - apk --update add make cmake py-pip git
-  - pip install docker-compose
+  - pip install docker-compose~=1.23.0
 
 nightly-prepare-image:
   stage: prepare-image
