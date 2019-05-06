@@ -46,7 +46,7 @@ apt-get install $APTOPTS make g++ \
 echo
 
 echo Installing dependencies for compiling with LLVM / Clang...
-apt-get install $APTOPTS llvm clang libc++-dev
+apt-get install $APTOPTS llvm clang-4.0 libc++-dev
 echo
 
 echo Installing dependencies for compiling targets which need libinput or GBM...
