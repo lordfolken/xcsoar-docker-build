@@ -1,6 +1,6 @@
 # Builds XCSoar UNIX Target in a docker image
 
-FROM debian:latest
+FROM debian:stable-backports
 ENV DEBIAN_FRONTEND=noninteractive
 ENV BPO="deb http://httpredir.debian.org/debian stretch-backports main non-free contrib"
 ENV SID="deb http://httpredir.debian.org/debian stretch main non-free contrib" 
