@@ -2,13 +2,11 @@
 
 FROM debian:stable-backports
 ENV DEBIAN_FRONTEND=noninteractive
-ENV BPO="deb http://httpredir.debian.org/debian stretch-backports main non-free contrib"
-ENV SID="deb http://httpredir.debian.org/debian stretch main non-free contrib" 
 
 # Install build dependencies 
-RUN rm -rf /var/lb/apt/lists/* && echo $BPO > /etc/apt/sources.list.d/debian-backports.list && echo $SID > /etc/apt/sources.list.d/stretch.list 
 COPY ./ide/provisioning/install-debian-packages.sh /root/install-debian-packages.sh
-COPY ./ide/provisioning/install-android-tools.sh /root/install-android-tools.sh
+RUN apt update && apt -y install curl && apt-get clean
+RUN curl https://raw.githubusercontent.com/XCSoar/XCSoar/master/ide/provisioning/install-debian-packages.sh -o /root/install-android-tools.sh
 RUN chmod 755 /root/install-android-tools.sh /root/install-debian-packages.sh
 RUN /root/install-debian-packages.sh && apt-get clean
 RUN /root/install-android-tools.sh && apt-get clean
