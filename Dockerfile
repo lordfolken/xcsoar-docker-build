@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Install build dependencies 
 COPY ./ide/provisioning/install-debian-packages.sh /root/install-debian-packages.sh
 RUN apt update && apt -y install curl && apt-get clean
-RUN curl https://raw.githubusercontent.com/XCSoar/XCSoar/master/ide/provisioning/install-debian-packages.sh -o /root/install-android-tools.sh
+RUN curl https://raw.githubusercontent.com/XCSoar/XCSoar/master/ide/provisioning/install-android-tools.sh -o /root/install-android-tools.sh
 RUN chmod 755 /root/install-android-tools.sh /root/install-debian-packages.sh
 RUN /root/install-debian-packages.sh && apt-get clean
 RUN /root/install-android-tools.sh && apt-get clean
