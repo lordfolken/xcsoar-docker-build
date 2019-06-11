@@ -6,7 +6,7 @@ set -e
 ANDROID_SDK_TOOLS_VERSION=3859397
 ANDROID_BUILD_TOOLS_VERSION=26.0.0
 ANDROID_PLATFORM_VERSION=22
-ANDROID_NDK_VERSION=r19
+ANDROID_NDK_VERSION=r20-beta3
 ANDROID_REPO_URL=https://dl.google.com/android/repository
 ANDROID_SDK_DIR=~/opt/android-sdk-linux
 ANDROID_NDK_DIR=~/opt/android-ndk-${ANDROID_NDK_VERSION}
@@ -28,11 +28,8 @@ else
 
   rm ${android_sdk_tmp_zip}
 
-  # Accepted License files
-  # These hashes can be generated with `yes | sdkmanager --licenses`
   echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > licenses/android-sdk-license
   echo d56f5187479451eabf01fb78af6dfcb131a6481e >> licenses/android-sdk-license
-  echo 24333f8a63b6825ea9c5514f83c2829b004d1fee >> licenses/android-sdk-license
 fi
 echo
 
