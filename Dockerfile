@@ -6,7 +6,7 @@ ENV BPO="deb http://httpredir.debian.org/debian stretch-backports main non-free 
 ENV SID="deb http://httpredir.debian.org/debian stretch main non-free contrib" 
 
 # Install build dependencies 
-RUN rm -rf /var/lb/apt/lists/* && echo $BPO > /etc/apt/sources.list.d/debian-backports.list && echo $SID > /etc/apt/sources.list.d/stretch.list && apt update 
+RUN rm -rf /var/lb/apt/lists/* && echo $BPO > /etc/apt/sources.list.d/debian-backports.list && echo $SID > /etc/apt/sources.list.d/stretch.list 
 COPY ./ide/provisioning/install-debian-packages.sh /root/install-debian-packages.sh
 COPY ./ide/provisioning/install-android-tools.sh /root/install-android-tools.sh
 RUN chmod 755 /root/install-android-tools.sh /root/install-debian-packages.sh
