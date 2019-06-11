@@ -42,7 +42,8 @@ apt-get install $APTOPTS make g++ \
   librsvg2-bin xsltproc \
   imagemagick gettext \
   mesa-common-dev libgl1-mesa-dev libegl1-mesa-dev \
-  fonts-dejavu
+  fonts-dejavu \
+  libnetcdf-dev
 echo
 
 echo Installing dependencies for compiling with LLVM / Clang...
