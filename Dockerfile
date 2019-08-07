@@ -1,6 +1,6 @@
 # Builds XCSoar UNIX Target in a docker image
 
-FROM debian:stable-backports
+FROM debian:stretch-backports
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install build dependencies 
