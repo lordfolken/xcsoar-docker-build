@@ -1,3 +1,5 @@
+**Please note: This has since been integratied into the orginal code base: https://github.com/XCSoar/XCSoar/tree/master/ide/docker The Docker images on github have been switched to the xcsoar code base https://hub.docker.com/r/folken/xcsoar-build **
+
 XCSoar Docker Image
 ===================
 
